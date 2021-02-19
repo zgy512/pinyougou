@@ -1,6 +1,8 @@
 package cn.itcast.core.pojo.entity;
 
-public class Result <T>{
+import java.io.Serializable;
+
+public class Result <T> implements Serializable {
     public Boolean code;
     public String message;
 
