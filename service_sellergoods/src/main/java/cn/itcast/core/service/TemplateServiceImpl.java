@@ -1,16 +1,24 @@
 package cn.itcast.core.service;
 
+import cn.itcast.core.dao.specification.SpecificationDao;
+import cn.itcast.core.dao.specification.SpecificationOptionDao;
 import cn.itcast.core.dao.template.TypeTemplateDao;
 import cn.itcast.core.pojo.entity.PageResult;
+import cn.itcast.core.pojo.specification.Specification;
+import cn.itcast.core.pojo.specification.SpecificationOption;
+import cn.itcast.core.pojo.specification.SpecificationOptionQuery;
+import cn.itcast.core.pojo.specification.SpecificationQuery;
 import cn.itcast.core.pojo.template.TypeTemplate;
 import cn.itcast.core.pojo.template.TypeTemplateQuery;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -18,6 +26,8 @@ public class TemplateServiceImpl implements TemplateService{
     @Autowired
     private TypeTemplateDao typeTemplateDao;
 
+    @Autowired
+    private SpecificationOptionDao specificationOptionDao;
     @Override
     public List<TypeTemplate> findAll() {
         return null;
@@ -60,5 +70,23 @@ public class TemplateServiceImpl implements TemplateService{
                 typeTemplateDao.deleteByPrimaryKey(id);
             }
         }
+    }
+
+    @Override
+    public List<Map> findBySpecList(Long id) {
+        TypeTemplate typeTemplate = typeTemplateDao.selectByPrimaryKey(id);
+        String specIds = typeTemplate.getSpecIds();
+        List<Map> specList = JSON.parseArray(specIds,Map.class);
+        if (specList!=null){
+            for (Map map:specList) {
+                Long specId = Long.parseLong(String.valueOf(map.get("id")));
+                SpecificationOptionQuery specificationOptionQuery = new SpecificationOptionQuery();
+                SpecificationOptionQuery.Criteria criteria = specificationOptionQuery.createCriteria();
+                criteria.andSpecIdEqualTo(specId);
+                List<SpecificationOption> specificationOptionList = specificationOptionDao.selectByExample(specificationOptionQuery);
+                map.put("options",specificationOptionList);
+            }
+        }
+        return specList;
     }
 }

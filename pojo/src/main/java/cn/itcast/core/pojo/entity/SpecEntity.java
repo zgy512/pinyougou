@@ -12,6 +12,11 @@ public class SpecEntity implements Serializable {
      */
     private Specification specification;
 
+    /**
+     * 规格列表
+     */
+    private List<SpecificationOption> specificationOptionList;
+
     public Specification getSpecification() {
         return specification;
     }
@@ -27,9 +32,4 @@ public class SpecEntity implements Serializable {
     public void setSpecificationOptionList(List<SpecificationOption> specificationOptionList) {
         this.specificationOptionList = specificationOptionList;
     }
-
-    /**
-     * 规格列表
-     */
-    private List<SpecificationOption> specificationOptionList;
 }

@@ -20,8 +20,20 @@ public class ItemCatServiceImpl implements ItemCatService{
     public List<ItemCat> findByParentId(Long parentId) {
         ItemCatQuery itemCatQuery = new ItemCatQuery();
         ItemCatQuery.Criteria criteria = itemCatQuery.createCriteria();
-        criteria.andIdEqualTo(parentId);
+        criteria.andParentIdEqualTo(parentId);
         List<ItemCat> itemCats = itemCatDao.selectByExample(itemCatQuery);
         return itemCats;
+    }
+
+    @Override
+    public List<ItemCat> findAll() {
+        List<ItemCat> itemCatList = itemCatDao.selectByExample(null);
+        return itemCatList;
+    }
+
+    @Override
+    public ItemCat findOne(Long id) {
+        ItemCat itemCat = itemCatDao.selectByPrimaryKey(id);
+        return itemCat;
     }
 }
