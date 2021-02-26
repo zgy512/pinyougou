@@ -68,4 +68,14 @@ public class GoodsController {
             return new PageResult("fail",0L,null);
         }
     }
+
+    @RequestMapping("/updateStatus")
+    public Result updateStatus(Long[] ids ,String status){
+        try {
+            goodsService.updateStatus(ids,status);
+            return new Result(true,"审核通过");
+        }catch (Exception e){
+            return new Result(false,"失败");
+        }
+    }
 }

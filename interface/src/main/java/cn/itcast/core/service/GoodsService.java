@@ -17,4 +17,6 @@ public interface GoodsService {
     GoodsEntity findOne(Long id);
 
     List<GoodsEntity> findAll();
+
+    void updateStatus(Long[] ids, String status);
 }
