@@ -3,7 +3,6 @@ package cn.itcast.core.controller;
 import cn.itcast.core.pojo.ad.Content;
 import cn.itcast.core.pojo.entity.PageResult;
 import cn.itcast.core.pojo.entity.Result;
-import cn.itcast.core.pojo.good.Brand;
 import cn.itcast.core.service.ContentService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestBody;

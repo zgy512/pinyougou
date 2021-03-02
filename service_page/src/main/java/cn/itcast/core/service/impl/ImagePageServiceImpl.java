@@ -10,7 +10,6 @@ import cn.itcast.core.pojo.item.Item;
 import cn.itcast.core.pojo.item.ItemCat;
 import cn.itcast.core.pojo.item.ItemQuery;
 import cn.itcast.core.service.ImagePageService;
-import freemarker.core.Configurable;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;

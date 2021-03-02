@@ -1,7 +1,6 @@
 package cn.itcast.core.service;
 
 import cn.itcast.core.pojo.entity.PageResult;
-import cn.itcast.core.pojo.entity.Result;
 import cn.itcast.core.pojo.good.Brand;
 
 import java.util.List;
