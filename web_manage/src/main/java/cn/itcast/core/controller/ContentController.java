@@ -19,14 +19,14 @@ public class ContentController {
     @Reference
     private ContentService contentService;
     @RequestMapping("/findAll")
-    public List<Brand> findAll() {
-        List<Brand> brandList = contentService.findAll();
-        return brandList;
+    public List<Content> findAll() {
+        List<Content> contentList = contentService.findAll();
+        return contentList;
     }
 
     @RequestMapping("/findOne")
-    public Brand findOne(Long id) {
-        Brand one = contentService.findOne(id);
+    public Content findOne(Long id) {
+        Content one = contentService.findOne(id);
         return one;
     }
 

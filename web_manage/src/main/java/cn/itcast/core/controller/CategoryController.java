@@ -20,14 +20,14 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @RequestMapping("/findAll")
-    public List<Brand> findAll() {
-        List<Brand> brandList = categoryService.findAll();
-        return brandList;
+    public List<ContentCategory> findAll() {
+        List<ContentCategory> contentCategoryList = categoryService.findAll();
+        return contentCategoryList;
     }
 
     @RequestMapping("/findOne")
-    public Brand findOne(Long id) {
-        Brand one = categoryService.findOne(id);
+    public ContentCategory findOne(Long id) {
+        ContentCategory one = categoryService.findOne(id);
         return one;
     }
 
